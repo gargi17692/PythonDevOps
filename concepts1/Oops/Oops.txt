@@ -1,0 +1,18 @@
+*What is Oops ?
+=> It is about: Class, Object, Inheritance, Polymorphism, Data Abstracton and Data Encapsulation.
+
+*What is an Object?
+=> Object could be anything which exists in real-time, like human, fan, car, email, any application, jenkins,
+   weblogic, tomcat, apache etc..
+=> Each objects has characteristics and functions 
+   eg: human/person:
+             => Characteristics: name, age, height
+             => Functions: walking, talking, running
+
+*Why Oop's ?
+ => To group related Functions(methods).
+ => To create a template/blueprint.
+
+|-------------------------------------------------------------------------------------------------------------------------|
+|*Oop's is a concept where characteristics and functions of a real-life object is packeged as a single entity in the code.|
+|-------------------------------------------------------------------------------------------------------------------------|
