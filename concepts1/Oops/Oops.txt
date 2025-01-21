@@ -16,3 +16,8 @@
 |-------------------------------------------------------------------------------------------------------------------------|
 |*Oop's is a concept where characteristics and functions of a real-life object is packeged as a single entity in the code.|
 |-------------------------------------------------------------------------------------------------------------------------|
+
+*What is Class?
+=> Class is a template/blueprint to create an object.
+   Class is a combination of attributes and methods.
+   We can define Attributes(variables) and methods.
