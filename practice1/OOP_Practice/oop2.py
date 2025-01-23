@@ -10,7 +10,7 @@ class Item(object):
          self.price=price
          self.quantity=quantity
          # Actions to execute
-         Item.all.append(self)  # self is the isatance it's-self every time it is created
+         Item.all.append(self)  # self is the insatance it's-self every time it is created
          return None
      def display(self):
          return self.price*self.quantity
@@ -19,9 +19,6 @@ class Item(object):
      def __repr__(self):
           return f"Item({"self.name"}, {self.price}, {self.quantity})" 
     
-    
-# for recap add script from oopy.txt
-
 item1=Item("Phone",100,1)
 item2=Item("Laptop",1000,3)
 item3=Item("Cable",10,5)
@@ -29,6 +26,6 @@ item4=Item("Mouse",50,5)
 item5=Item("Keyboard",75,5)
 
 # print(Item.all) # [<__main__.Item object at 0x7eb6f7b30710>, <__main__.Item object at 0x7eb6f7b30740>, <__main__.Item object at 0x7eb6f7b30860>, <__main__.Item object at 0x7eb6f7b30890>, <__main__.Item object at 0x7eb6f7b308c0>]
-# for each_instances in Item.all:
-#     print(each_instances.name)  
+for each_instances in Item.all:
+    print(each_instances.name)  
 print(Item.all) #[Item(self.name, 100, 1), Item(self.name, 1000, 3), Item(self.name, 10, 5), Item(self.name, 50, 5), Item(self.name, 75, 5)]
