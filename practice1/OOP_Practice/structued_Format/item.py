@@ -1,5 +1,3 @@
-#Inheritance
-
 import csv
 class Item(object):
       pay_rate = 0.8 # The pay rate after 20% discount
@@ -50,22 +48,3 @@ class Item(object):
       def __repr__(self):
            # return f"Item({"self.name"}, {self.price}, {self.quantity})"
             return f"{self.__class__.__name__}({"self.name"}, {self.price}, {self.quantity})" 
-     
-class Phone(Item):
-      def __init__(self, name: str, price: float, quantity=0, broken_phones=0):
-           # Calling the super function to have access to all atributes/methods
-           super().__init__(
-               name,price,quantity
-           )
-           # Run validations to the received arguments
-           assert broken_phones >=0, f"Broken_phones {broken_phones} is not greater or equal to zero!"
-           # Assign to self object
-           self.broken_phones=broken_phones
-           return None
-
-phone1=Phone("jscPhonev10", 500, 5, 1)
-# print(phone1.calculate_total_price())
-phone2=Phone("jscPhonev20", 700, 5, 1)
-
-print(Item.all)
-print(Phone.all)
