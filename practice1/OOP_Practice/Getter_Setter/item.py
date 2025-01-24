@@ -22,8 +22,11 @@ class Item(object):
       @name.setter
       # Yet we want to set new value for *name*
       def name(self,value):
-           #print("Ypu are trying to set")
-           self.__name=value
+           if len(value) > 10:
+                raise Exception("The name is too long!")
+           else:
+                #print("Ypu are trying to set")
+                self.__name=value
 
       def apply_dicount(self):
            self.price=self.price*self.pay_rate
