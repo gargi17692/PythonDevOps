@@ -2,9 +2,9 @@
 
 import csv
 class Item(object):
-     pay_rate = 0.8 # The pay rate after 20% discount
-     all=[]
-     def __init__(self, name: str, price: float, quantity=0):
+      pay_rate = 0.8 # The pay rate after 20% discount
+      all=[]
+      def __init__(self, name: str, price: float, quantity=0):
          # Run validations to the received arguments
          assert price >= 0, f"price {price} is not greater or equal to zero!"
          assert quantity >= 0, f"quantity {quantity} is not greater or equal to zero!"
@@ -14,19 +14,20 @@ class Item(object):
          self.quantity=quantity
          # Actions to execute
          Item.all.append(self)  # self is the insatance it's-self every time it is created
-         return None
-     def display(self):
-         return self.price*self.quantity
-     def apply_dicount(self):
-         self.price=self.price*self.pay_rate
+        
+
+      def apply_dicount(self):
+           self.price=self.price*self.pay_rate
+      def calculate_total_price(self):
+           return self.price*self.quantity
     
-     #*When we call our classmethod ; the class-object it's-self passed as the first argument always in the background 
-     @classmethod
-     def instantiate_from_csv(cls):
-          with open('items.csv', 'r') as f:
+      #*When we call our classmethod ; the class-object it's-self passed as the first argument always in the background 
+      @classmethod
+      def instantiate_from_csv(cls):
+           with open('items.csv', 'r') as f:
                reader = csv.DictReader(f)
                items=list(reader)
-          for item in items:
+           for item in items:
                #print(item)
                Item(
                     name=item.get('name'),
@@ -34,9 +35,9 @@ class Item(object):
                     quantity=int(item.get('quantity')),
                )
      
-     # Here in staticmethod ; the class-object doesn't pass as an argument for the mehod ; this is an isolated function 
-     @staticmethod
-     def is_integer(num):
+      # Here in staticmethod ; the class-object doesn't pass as an argument for the mehod ; this is an isolated function 
+      @staticmethod
+      def is_integer(num):
            #we will count out the floats that are point zero(ie; 10.0,50.0) 
            if isinstance(num,float):
                 #cout out decimal values that are point zero
@@ -46,6 +47,28 @@ class Item(object):
            else:
                 return False
 
-     def __repr__(self):
+      def __repr__(self):
            return f"Item({"self.name"}, {self.price}, {self.quantity})" 
-    
+     
+class Phone(Item):
+      all=[]
+      def __init__(self, name: str, price: float, quantity=0, broken_phones=0):
+            # Run validations to the received arguments
+           assert price >= 0, f"price {price} is not greater or equal to zero!"
+           assert quantity >= 0, f"quantity {quantity} is not greater or equal to zero!"
+           assert broken_phones >=0, f"Broken_phones {broken_phones} is not greater or equal to zero!"
+           # Assign to self object
+           self.name=name
+           self.price=price
+           self.quantity=quantity
+           self.broken_phones=broken_phones
+           # Actions to execute
+           Phone.all.append(self)  # self is the insatance it's-self every time it is created
+           return None
+
+
+# item1=Item("phone",500,5)    
+# print(item1.calculate_total_price())
+phone1=Phone("jscPhonev10", 500, 5, 1)
+print(phone1.calculate_total_price())
+phone2=Phone("jscPhonev20", 700, 5, 1)
