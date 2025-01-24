@@ -8,10 +8,20 @@ class Item(object):
          assert quantity >= 0, f"quantity {quantity} is not greater or equal to zero!"
          # Assign to self object
          self.__name=name # Making name private to the class once it's instantiated 
-         self.price=price
+         self.__price=price
          self.quantity=quantity
          # Actions to execute
          Item.all.append(self)  # self is the insatance it's-self every time it is created
+      
+      @property
+      def price(self):
+           return self.__price
+      
+      def apply_dicount(self):
+           self.__price=self.__price*self.pay_rate
+     
+      def apply_increment(self,increment_value):
+           self.__price = self.__price + self.__price*increment_value
 
       @property
       # Property Decorator = Read-Only Atribute
@@ -26,12 +36,10 @@ class Item(object):
                 raise Exception("The name is too long!")
            else:
                 #print("Ypu are trying to set")
-                self.__name=value
+               self.__name=value
 
-      def apply_dicount(self):
-           self.price=self.price*self.pay_rate
       def calculate_total_price(self):
-           return self.price*self.quantity
+           return self.__price*self.quantity
     
       #*When we call our classmethod ; the class-object it's-self passed as the first argument always in the background 
       @classmethod
