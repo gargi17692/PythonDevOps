@@ -18,23 +18,20 @@ employee_info ={
 class Help(Resource):
      def get(self):
          help={
-            "All Endpoints" : ["/api/v1/esinfo","/api/v1/esinfo/:ename"]
+            "All Endpoints" : ["/esinfo","/einfo/:ename"]
               }
          return help
 
 class Employess(Resource):
-     def get(self,ename=None):
-         if ename:
-              if ename in employee_info.keys():
-                 return employee_info.get(ename)
-              else:
-                     message={
-                      "message" : "Employee_Name not found"
-                       }
-                     return message
+     def get(self):
          return employee_info
-     
+
+class Emloyee(Resource):
+      def get(self,ename):
+           return employee_info.get(ename)
+
 api.add_resource(Help,"/")
-api.add_resource(Employess,"/api/v1/esinfo","/api/v1/esinfo/<string:ename>")
+api.add_resource(Employess,"/esinfo")
+api.add_resource(Emloyee,"/einfo/<string:ename>")
 
 app.run(port=5000,host="localhost")
