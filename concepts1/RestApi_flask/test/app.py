@@ -1,46 +1,37 @@
 from flask import Flask
-from flask_restful import Resource,Api
+from flask_restful import Resource, Api
 
 app=Flask(__name__)
-api=Api(app) 
+api=Api(app)
 
-'''
-> creating endpoints : > / :- for help
-                       > /ping :- for status of REST API
-                       > /info :- for employee-info
-'''
+employee_info ={
+              "Radha": {
+              "salary": "100k",
+              "Technology": "Linux Admin"
+                },
+              "Krishnan": {
+              "salary":"8k",
+              "Technology": "Web Developer",
+               }
+             }
+
 class Help(Resource):
-    def get(self):
+     def get(self):
          help={
-            "Available REST APIs are" : ["/ping","/info"]
-            }
+            "All Endpoints" : ["/esinfo","/einfo/:ename"]
+              }
          return help
 
-class Ping(Resource):
-         def get(self):
-             status = {
-                "status" : "Alive"  
-              }
-             return status
-    
-class Employee(Resource):
-      def get(self):
-             employee_info ={
-              "emp1": {
-              "name": "Radha",
-              "salary": "100k"
-              },
-              "emp2": {
-              "name":"Krishna",
-              "salary":"8k"
-              }
-             }
-             return employee_info
+class Employess(Resource):
+     def get(self):
+         return employee_info
 
-# Inhereting Resource class to our classes; automatically endpoint will map to our perticular class.
-# But we need to add endponits information to api(object).
+class Emloyee(Resource):
+      def get(self,ename):
+           return employee_info.get(ename)
+
 api.add_resource(Help,"/")
-api.add_resource(Ping,"/ping")
-api.add_resource(Employee,"/info")
+api.add_resource(Employess,"/esinfo")
+api.add_resource(Emloyee,"/einfo/<string:ename>")
 
-app.run(port=5000,host="localhost") 
+app.run(port=5000,host="localhost")
