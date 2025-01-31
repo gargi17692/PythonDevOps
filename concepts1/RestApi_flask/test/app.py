@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, make_response,jsonify
 from flask_restful import Resource, Api
 
 app=Flask(__name__)
@@ -10,7 +10,7 @@ employee_info ={
               "Technology": "Linux Admin"
                 },
               "Krishnan": {
-              "salary":"8k",
+              "salary":"10k",
               "Technology": "Web Developer",
                }
              }
@@ -26,15 +26,15 @@ class Employess(Resource):
      def get(self,ename=None):
          if ename:
               if ename in employee_info.keys():
-                 return employee_info.get(ename)
+                 return make_response(jsonify(employee_info.get(ename)),200)
               else:
                      message={
                       "message" : "Employee_Name not found"
                        }
-                     return message
-         return employee_info
+                     return make_response(jsonify(message),404)
+         return make_response(jsonify(employee_info),200)
      
 api.add_resource(Help,"/")
 api.add_resource(Employess,"/api/v1/esinfo","/api/v1/esinfo/<string:ename>")
 
-app.run(port=5000,host="localhost")
+app.run(debug=True,port=5000,host="localhost")
