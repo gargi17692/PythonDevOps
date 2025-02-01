@@ -19,3 +19,6 @@ Steps:
    3. Resource: employee_info
    4. HTTP Verbs : GET
 ---------------------------------------------------------------------------------------
+
+*What is request object in flask module?
+=>The request object contains all the data that sent from the client to server.
